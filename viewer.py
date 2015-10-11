@@ -48,7 +48,18 @@ while True:
       elif(log[p][0] == "H"): player = 2
       elif(log[p][0] == "M"): player = 3
       else: player = 4
+      
       playerlocations[player] = str(log[p][1]) + str(log[p][2])
+
+      if (player == 4):
+         backdistance = 0
+         if (playerlocations[4] == "TP"): playerlocations[4] == "CD"
+         while (playerlocations[4] == "HI" or playerlocations[4][1].isdigit()):
+            if (playerlocations[4] == "HI"): backdistance += 1
+            else: backdistance += int(playerlocations[4][1])
+            p = currentplay - 5 * backdistance
+            playerlocations[4] = str(log[p][1]) + str(log[p][2])
+
 
    for i in range(0, len(playerimages)):
       for p in places:
