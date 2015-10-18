@@ -48,21 +48,42 @@ while True:
       elif(log[p][0] == "H"): player = 2
       elif(log[p][0] == "M"): player = 3
       elif(log[p][0] == "D"): player = 4
+
+      # the player who's turn it is right now
+      currentPlayer = log[currentplay][0]
+
+      # moveback required to get to the most recent dracula move
+      if(currentPlayer == "G"): moveBack = 1
+      elif(currentPlayer == "S"): moveBack = 2
+      elif(currentPlayer == "H"): moveBack = 3
+      elif(currentPlayer == "M"): moveBack = 4
+      elif(currentPlayer == "D"): moveBack = 0
       
+      # get current loc
       currentLoc = str(log[p][1]) + str(log[p][2])
 
+      # if it is dracula's move
       if (player == 4):
+
+         # if hide, keep current position
          if (currentLoc == "HI"):
             currentLoc = playerlocations[4]
          elif (currentLoc[1].isdigit()):
-            backdistance = int(currentLoc[1])
-            p = currentplay - 5 * backdistance
+            # if some kind of double back
+
+            backdistance = int(currentLoc[1]) # num of DB
+
+            # move p back from currentplay to the most recent drac move
+            # and then the required number of DB distance
+            p = currentplay - moveBack - (5 * backdistance) 
+
+            # update currentloc
             currentLoc = str(log[p][1]) + str(log[p][2])
          else:
-            if (currentLoc == "TP"): currentLoc == "CD"  
-      
-      playerlocations[player] = currentLoc
+            if (currentLoc == "TP"): currentLoc == "CD" 
 
+      # save player current location in playerlocations array
+      playerlocations[player] = currentLoc
 
    for i in range(0, len(playerimages)):
       for p in places:
