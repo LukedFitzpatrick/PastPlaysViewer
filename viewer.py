@@ -51,8 +51,6 @@ while True:
       
       currentLoc = str(log[p][1]) + str(log[p][2])
 
-      print(player, currentLoc)
-
       if (player == 4):
          if (currentLoc == "HI"):
             currentLoc = playerlocations[4]
@@ -62,13 +60,8 @@ while True:
             currentLoc = str(log[p][1]) + str(log[p][2])
          else:
             if (currentLoc == "TP"): currentLoc == "CD"  
-
-      print(currentLoc)    
-
+      
       playerlocations[player] = currentLoc
-
-      print(playerlocations)
-      print
 
 
    for i in range(0, len(playerimages)):
